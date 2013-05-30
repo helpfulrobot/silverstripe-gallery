@@ -14,10 +14,9 @@ class GalleryPage extends Page {
     public function getCMSFields() {
         $fields = parent::getCMSFields();
 
-        // Determine if you need to show gallery fields
-        $fields->addFieldToTab("Root.Gallery", UploadField::create("Images", "Images to appear in gallery"));
-
-        $fields->removeByName('HideDescription');
+        $fields->findOrMakeTab('Root.Gallery')
+            ->setTitle(_t('GalleryPage.SINGULARNAME'))
+            ->push(UploadField::create('Images', _t('GalleryPage.UPLOAD')));
 
         return $fields;
     }
@@ -26,8 +25,8 @@ class GalleryPage extends Page {
         $fields = parent::getSettingsFields();
 
         $gallery = FieldGroup::create(
-            CheckboxField::create('HideDescription', 'Hide the description of each image?')
-        )->setTitle('Gallery');
+            CheckboxField::create('HideDescription', _t('GalleryPage.HIDE_DESCRIPTION'))
+        )->setTitle(_t('GalleryPage.SINGULARNAME'));
 
         $fields->addFieldToTab('Root.Settings', $gallery);
 
