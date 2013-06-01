@@ -8,8 +8,8 @@ class GalleryImage extends DataExtension {
     public static $belogs_many_many = array(
         'Gallery'   => 'GalleryPage'
     );
-    
+
     public function updateCMSFields(FieldList $fields) {
-        $fields->addFieldToTab('Root.Main', TextField::create('Sort', 'Prioritise (Higher numbers first)'));
+        $fields->addFieldToTab('Root.Main', TextField::create('Sort', _t('ContactPage.PRIORITY')));
     }
 }

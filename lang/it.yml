@@ -5,3 +5,4 @@ it:
     DESCRIPTION: 'Pagina con galleria di immagini abbinata'
     UPLOAD: 'Immagini da mostrare nella galleria'
     HIDE_DESCRIPTION: 'Nascondi la descrizione di ogni immagine?'
+    PRIORITY: 'Priorità (valore più grande in cima)'
