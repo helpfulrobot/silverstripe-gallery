@@ -10,6 +10,6 @@ class GalleryImage extends DataExtension {
     );
 
     public function updateCMSFields(FieldList $fields) {
-        $fields->addFieldToTab('Root.Main', TextField::create('Sort', _t('ContactPage.PRIORITY')));
+        $fields->addFieldToTab('Root.Main', TextField::create('Sort', _t('GalleryPage.PRIORITY')));
     }
 }
