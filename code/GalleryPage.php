@@ -1,13 +1,12 @@
 <?php
 
 class GalleryPage extends Page {
-    public static $icon = "gallery/images/gallery.png";
 
-    public static $db = array(
-        "HideDescription"   => 'Boolean'
+    private static $icon = 'gallery/images/gallery.png';
+    private static $db = array(
+        'HideDescription'   => 'Boolean'
     );
-
-    public static $many_many = array(
+    private static $many_many = array(
         'Images'     => 'Image'
     );
 
