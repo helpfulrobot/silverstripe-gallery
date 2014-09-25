@@ -174,3 +174,6 @@
   left: -9000px;
   top: -9000px;
 }
+.colorbox-enabled.ad-image {
+  cursor: pointer;
+}
