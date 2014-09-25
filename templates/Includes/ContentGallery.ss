@@ -1,22 +1,11 @@
 <% if $SortedImages %>
-<%-- The following line force the inclusion of JQuery *before* ad-gallery --%>
+<%-- The following line force the inclusion of JQuery *before* fotorama --%>
 <% include JQuery %>
-<% require css(gallery/css/jquery.ad-gallery.css) %>
-<% require javascript(gallery/javascript/jquery.ad-gallery.min.js) %>
-<% require javascript(gallery/javascript/gallery.js) %>
+<% require javascript(//fotorama.s3.amazonaws.com/4.6.2/fotorama.js) %>
+<% require CSS(//fotorama.s3.amazonaws.com/4.6.2/fotorama.css) %>
 <div class="row">
-	<div id="ss-gallery" class="ad-gallery" style="height:$ImageHeight">
-		<div class="ad-image-wrapper"></div>
-		<div class="ad-controls"></div>
-		<div class="ad-nav">
-			<div class="ad-thumbs">
-				<ul class="ad-thumb-list"><% loop $SortedImages %>
-					<li>
-						<a data-target="$Link" href="$Link"><% with $SetHeight($Top.StripHeight) %><img src="$Link" width="$Width" height="$Height"<% if $Top.Captions %> alt="$Title"<% end_if %>><% end_with %></a>
-					</li><% end_loop %>
-				</ul>
-			</div>
-		</div>
+	<div class="fotorama" data-nav="thumbs" data-width="100%" data-captions="$Captions" data-height="$Top.SlideHeight" data-thumbheight="$Top.StripHeight" data-allowfullscreen="native"><% loop $SortedImages %>
+		<a data-caption="$Title.ATT" href="$SetHeight($Top.SlideHeight).Link"><img <% with $SetHeight($Top.StripHeight) %>width="$Width" height="$Height" src="$Link"<% end_with %> data-full="$Link"></a><% end_loop %>
 	</div>
 </div>
 <% end_if %>

@@ -5,5 +5,5 @@ en:
     DESCRIPTION: 'Page with image gallery bound to it'
     UPLOAD: 'Images to appear in gallery'
     db_Captions: 'Show image captions'
-    db_ImageHeight: 'Image height'
+    db_SlideHeight: 'Slide height'
     db_StripHeight: 'Strip height'

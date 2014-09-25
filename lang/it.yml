@@ -5,5 +5,5 @@ it:
     DESCRIPTION: 'Pagina con galleria di immagini abbinata'
     UPLOAD: 'Immagini da mostrare nella galleria'
     db_Captions: 'Mostra didascalia immagini'
-    db_ImageHeight: 'Altezza immagine'
+    db_SlideHeight: 'Altezza immagine'
     db_StripHeight: 'Altezza striscia'

@@ -9,10 +9,10 @@ class GalleryImage extends DataExtension {
 
 class GalleryPage extends Page {
 
-    private static $icon = 'gallery/images/gallery.png';
+    private static $icon = 'gallery/img/gallery.png';
     private static $db = array(
         'Captions'    => 'Boolean',
-        'ImageHeight' => 'Int',
+        'SlideHeight' => 'Int',
         'StripHeight' => 'Int',
     );
     private static $many_many = array(
@@ -24,7 +24,7 @@ class GalleryPage extends Page {
         )
     );
     private static $defaults = array(
-        'ImageHeight' => 400,
+        'SlideHeight' => 400,
         'StripHeight' => 64,
         'Captions' => true
     );
@@ -45,7 +45,7 @@ class GalleryPage extends Page {
 
         $fields->addFieldToTab('Root.Settings',
             FieldGroup::create(
-                TextField::create('ImageHeight', _t('GalleryPage.db_ImageHeight')),
+                TextField::create('SlideHeight', _t('GalleryPage.db_SlideHeight')),
                 TextField::create('StripHeight', _t('GalleryPage.db_StripHeight')),
                 CheckboxField::create('Captions', _t('GalleryPage.db_Captions'))
             )->setTitle(_t('GalleryPage.SINGULARNAME'))
@@ -55,7 +55,7 @@ class GalleryPage extends Page {
     }
 
     public function getCMSValidator() {
-        return new RequiredFields(array('ImageHeight', 'StripHeight'));
+        return new RequiredFields(array('SlideHeight', 'StripHeight'));
     }
 }
 
