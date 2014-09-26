@@ -1,22 +1,22 @@
 Silverstripe Image Gallery
 ==========================
 
-It implements the new **GalleryPage** type that adds a new content tab
-in the CMS (called _Gallery_) for handling the images. You can do bulk
-uploads and reorder the images with drag and drop on their thumbnails.
-The same image can be included in more than one gallery.
+A new page type (_GalleryPage_) that provides everything needed to
+manage a photo gallery.
 
-Furthermore the page will add some field to the _Settings_ tab. This
-will allow to customize some aspect of the gallery, e.g. the height of
-the thumbnail strip, the height of the image slide and a flag to show or
-hide the captions.
+You can do bulk uploads and reorder the images by dragging and dropping
+their thumbnails in a dedicated tab (_Gallery_) inside the CMS. The same
+image can be shared among multiple galleries. This module adds also some
+field to the _Settings_ tab. This will allow to customize some aspect of
+the gallery on a per page basis, e.g. the height of the thumbnail strip,
+the height of the image slide and a flag to show or hide the captions.
 
-Regardling the JavaScript side, it is easy to write your own template
-and support the library of your choice. Out of the box the project use
-[Fotorama](http://fotorama.io/). You can include the gallery block in
-your page from the `ContentGallery.ss` template, e.g.:
+On the developer side of things, you can write your own templates and
+support the JavaScript library of your choice. Out of the box this
+project uses [Fotorama](http://fotorama.io/) and you can embed the
+gallery block in your pages by including `ContentGallery.ss`, e.g.:
 
-    <%-- Typical layout Page.ss --%>
+    <%-- This is a typical Page.ss --%>
     <h1>$Title</h1>
     <div class="gallery">
         <% include ContentGallery.ss %>
@@ -25,20 +25,32 @@ your page from the `ContentGallery.ss` template, e.g.:
         $Content
     </div>
 
+It is also available a page template (`GalleryPage.ss`) that provides
+a [silverstrap](http://dev.entidi.com/p/silverstrap/) ready page
+template.
+
 Author
 ------
 
-Although originally a fork of
+Although the project originally started as a fork of
 [silverstripe-gallery](https://github.com/i-lateral/silverstripe-gallery)
-by i-lateral, the actual code has been rewrote almost from scratch by
-[ntd](http://www.entidi.com/) and, apart the name, practically
-everything else has changed.
+by [i-lateral](http://www.i-lateral.com/), the actual code has been
+rewrote almost from scratch by [ntd](http://www.entidi.com/) and, apart
+the name, practically everything else has changed.
+
+The project [home page](http://silverstripe.entidi.com/) is shared by
+other [SilverStripe](http://www.silverstripe.org/) modules and themes.
+
+To check out the code, report issues or propose enanchements, go to the
+[dedicated tracker](http://dev.entidi.com/p/silverstripe-gallery).
+Alternatively, you can do the same things by leveraging the official
+[github repository](https://github.com/ntd/silverstripe-gallery).
 
 Installation
 ------------
 
 The feature of reordering with drag and drop is provided by the
-[sortablefile](https://github.com/bummzack/sortablefile) project that
+[sortablefile](https://github.com/bummzack/sortablefile) module that
 *must* be installed before.
 
 To install silverstripe-gallery you should proceed as usual: drop the
