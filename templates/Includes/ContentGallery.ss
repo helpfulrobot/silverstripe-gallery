@@ -1,8 +1,8 @@
 <% if $SortedImages %>
 <% include Fotorama %>
 <div class="row">
-	<div class="fotorama" data-nav="thumbs" data-width="100%" data-captions="$Captions" data-height="$Top.SlideHeight" data-thumbheight="$Top.StripHeight" data-allowfullscreen="native"><% loop $SortedImages %>
-		<a data-caption="$Title.ATT" href="$SetHeight($Top.SlideHeight).Link"><img <% with $SetHeight($Top.StripHeight) %>width="$Width" height="$Height" src="$Link"<% end_with %> data-full="$Link"></a><% end_loop %>
+	<div id="ss-gallery" class="fotorama" data-auto="false" data-captions="$Captions" data-height="$Top.SlideHeight" data-thumbheight="$Top.StripHeight"><% loop $SortedImages %>
+		<a data-caption="$Title.ATT" data-full="$Link.ATT" href="$SetHeight($Top.SlideHeight).Link.ATT"><% with $SetHeight($Top.StripHeight) %><img width="$Width" height="$Height" src="$Link"><% end_with %></a><% end_loop %>
 	</div>
 </div>
 <% end_if %>
