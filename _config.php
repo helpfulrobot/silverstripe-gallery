@@ -1,3 +1,10 @@
 <?php
-// Extend image class
-Object::add_extension('Image', 'GalleryImage');
+
+/**
+ * @package silverstripe-gallery
+ *
+ * Requires sortablefile:
+ * https://github.com/bummzack/sortablefile
+ */
+
+Image::add_extension('GalleryImage');

@@ -4,5 +4,6 @@ en:
     PLURALNAME: 'Galleries'
     DESCRIPTION: 'Page with image gallery bound to it'
     UPLOAD: 'Images to appear in gallery'
-    HIDE_DESCRIPTION: 'Hide the description of each image?'
-    PRIORITY: 'Prioritise (higher numbers first)'
+    db_Captions: 'Show image captions'
+    db_SlideHeight: 'Slide height'
+    db_StripHeight: 'Strip height'

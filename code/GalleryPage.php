@@ -1,22 +1,41 @@
 <?php
 
-class GalleryPage extends Page {
-    public static $icon = "gallery/images/gallery.png";
+class GalleryImage extends DataExtension {
 
-    public static $db = array(
-        "HideDescription"   => 'Boolean'
+    private static $belongs_many_many = array(
+        'Gallery' => 'GalleryPage',
     );
+}
 
-    public static $many_many = array(
-        'Images'     => 'Image'
+class GalleryPage extends Page {
+
+    private static $icon = 'gallery/img/gallery.png';
+    private static $db = array(
+        'Captions'    => 'Boolean default(true)',
+        'SlideHeight' => 'Int default(400)',
+        'StripHeight' => 'Int default(64)',
+    );
+    private static $many_many = array(
+        'Images' => 'Image'
+    );
+    private static $many_many_extraFields = array(
+        'Images' => array(
+            'SortOrder' => 'Int'
+        )
+    );
+    private static $defaults = array(
+        'SlideHeight' => 400,
+        'StripHeight' => 64,
+        'Captions' => true
     );
 
     public function getCMSFields() {
         $fields = parent::getCMSFields();
 
+        $field = new SortableUploadField('Images', _t('GalleryPage.UPLOAD'));
         $fields->findOrMakeTab('Root.Gallery')
             ->setTitle(_t('GalleryPage.SINGULARNAME'))
-            ->push(UploadField::create('Images', _t('GalleryPage.UPLOAD')));
+            ->push($field);
 
         return $fields;
     }
@@ -24,28 +43,25 @@ class GalleryPage extends Page {
     public function getSettingsFields() {
         $fields = parent::getSettingsFields();
 
-        $gallery = FieldGroup::create(
-            CheckboxField::create('HideDescription', _t('GalleryPage.HIDE_DESCRIPTION'))
-        )->setTitle(_t('GalleryPage.SINGULARNAME'));
-
-        $fields->addFieldToTab('Root.Settings', $gallery);
+        $fields->addFieldToTab('Root.Settings',
+            FieldGroup::create(
+                TextField::create('SlideHeight', _t('GalleryPage.db_SlideHeight')),
+                TextField::create('StripHeight', _t('GalleryPage.db_StripHeight')),
+                CheckboxField::create('Captions', _t('GalleryPage.db_Captions'))
+            )->setTitle(_t('GalleryPage.SINGULARNAME'))
+        );
 
         return $fields;
     }
 
+    public function getCMSValidator() {
+        return new RequiredFields(array('SlideHeight', 'StripHeight'));
+    }
 }
 
 class GalleryPage_Controller extends Page_Controller {
-    public function init() {
-        parent::init();
-    }
 
-    public function Gallery() {
-        $vars = array(
-            'HideDescription' => $this->HideDescription,
-            'Images' => $this->Images()->sort('Sort','DESC')
-        );
-
-        return $this->renderWith('Gallery',$vars);
+    public function SortedImages() {
+        return $this->Images()->Sort('SortOrder');
     }
 }
