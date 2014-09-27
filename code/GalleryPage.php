@@ -11,9 +11,9 @@ class GalleryPage extends Page {
 
     private static $icon = 'gallery/img/gallery.png';
     private static $db = array(
-        'Captions'    => 'Boolean',
-        'SlideHeight' => 'Int',
-        'StripHeight' => 'Int',
+        'Captions'    => 'Boolean default(true)',
+        'SlideHeight' => 'Int default(400)',
+        'StripHeight' => 'Int default(64)',
     );
     private static $many_many = array(
         'Images' => 'Image'
