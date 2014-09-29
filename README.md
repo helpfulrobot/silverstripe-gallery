@@ -11,10 +11,13 @@ field to the _Settings_ tab. This will allow to customize some aspect of
 the gallery on a per page basis, e.g. the height of the thumbnail strip,
 the height of the image slide and a flag to show or hide the captions.
 
-On the developer side of things, you can write your own templates and
-support the JavaScript library of your choice. Out of the box this
-module uses [Fotorama](http://fotorama.io/). You can embed the gallery
-block in your pages by including `ContentGallery.ss`, e.g.:
+Usage
+-----
+
+You can write your own templates and support the JavaScript library of
+your choice. Out of the box the [Fotorama](http://fotorama.io/) library
+is used. You can embed the default gallery block in your pages by
+including `ContentGallery.ss`, e.g.:
 
     <%-- This is a typical Page.ss --%>
     <h1>$Title</h1>
@@ -25,10 +28,15 @@ block in your pages by including `ContentGallery.ss`, e.g.:
         $Content
     </div>
 
+Keep in mind the default templates only use the `Height` and
+`ThumbnailHeight` settings: they *must* be set to a value greater than 0
+or an error will be generated. By default they should be set by the CMS
+to 400 and 64 respectively.
+
 Alternatively, the `GalleryPage.ss` layout template is provided. It
 renders a full (standard) page, though it works out of the box only with
-the [silverstrap](http://dev.entidi.com/p/silverstrap/) theme because it
-relies on some convention adopted by that theme.
+[silverstrap](http://dev.entidi.com/p/silverstrap/) because it relies on
+some convention adopted by that theme.
 
 Author
 ------
