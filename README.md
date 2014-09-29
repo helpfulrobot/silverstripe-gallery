@@ -1,5 +1,5 @@
-Silverstripe Image Gallery
-==========================
+Silverstripe Gallery
+====================
 
 A new page type (_GalleryPage_) that provides everything needed to
 manage a photo gallery.
@@ -11,10 +11,13 @@ field to the _Settings_ tab. This will allow to customize some aspect of
 the gallery on a per page basis, e.g. the height of the thumbnail strip,
 the height of the image slide and a flag to show or hide the captions.
 
-On the developer side of things, you can write your own templates and
-support the JavaScript library of your choice. Out of the box this
-project uses [Fotorama](http://fotorama.io/) and you can embed the
-gallery block in your pages by including `ContentGallery.ss`, e.g.:
+Usage
+-----
+
+You can write your own templates and support the JavaScript library of
+your choice. Out of the box the [Fotorama](http://fotorama.io/) library
+is used. You can embed the default gallery block in your pages by
+including `ContentGallery.ss`, e.g.:
 
     <%-- This is a typical Page.ss --%>
     <h1>$Title</h1>
@@ -25,9 +28,15 @@ gallery block in your pages by including `ContentGallery.ss`, e.g.:
         $Content
     </div>
 
-It is also available a page template (`GalleryPage.ss`) that provides
-a [silverstrap](http://dev.entidi.com/p/silverstrap/) ready page
-template.
+Keep in mind the default templates only use the `Height` and
+`ThumbnailHeight` settings: they *must* be set to a value greater than 0
+or an error will be generated. By default they should be set by the CMS
+to 400 and 64 respectively.
+
+Alternatively, the `GalleryPage.ss` layout template is provided. It
+renders a full (standard) page, though it works out of the box only with
+[silverstrap](http://dev.entidi.com/p/silverstrap/) because it relies on
+some convention adopted by that theme.
 
 Author
 ------
@@ -35,13 +44,13 @@ Author
 Although the project originally started as a fork of
 [silverstripe-gallery](https://github.com/i-lateral/silverstripe-gallery)
 by [i-lateral](http://www.i-lateral.com/), the actual code has been
-rewrote almost from scratch by [ntd](http://www.entidi.com/) and, apart
+rewrote almost from scratch by [ntd](mailto:ntd@entidi.it) and, apart
 the name, practically everything else has changed.
 
 The project [home page](http://silverstripe.entidi.com/) is shared by
 other [SilverStripe](http://www.silverstripe.org/) modules and themes.
 
-To check out the code, report issues or propose enanchements, go to the
+To check out the code, report issues or propose enhancements, go to the
 [dedicated tracker](http://dev.entidi.com/p/silverstripe-gallery).
 Alternatively, you can do the same things by leveraging the official
 [github repository](https://github.com/ntd/silverstripe-gallery).
@@ -49,10 +58,17 @@ Alternatively, you can do the same things by leveraging the official
 Installation
 ------------
 
-The feature of reordering with drag and drop is provided by the
+The gallery module is implemented as an extension of
+[silverstripe-carousel](https://github.com/ntd/silverstripe-carousel),
+so you *must* install it first. This in turn will install the
 [sortablefile](https://github.com/bummzack/sortablefile) module that
-*must* be installed before.
+provides the drag and drop reordering feature.
 
-To install silverstripe-gallery you should proceed as usual: drop the
-directory in your SilverStripe root and do a `/dev/build/`. You will
-gain the new `GalleryPage` type in the CMS.
+To install silverstripe-gallery itself you should proceed as usual:
+drop the directory tree in your SilverStripe root and do a
+`/dev/build/`. You will gain the new `GalleryPage` type in the CMS.
+
+If you use [composer](https://getcomposer.org/), the dependencies will
+be pulled-in automatically, so you could just run the following command:
+
+    composer require entidi/silverstripe-gallery dev-master

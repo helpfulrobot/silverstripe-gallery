@@ -3,8 +3,6 @@
 /**
  * @package silverstripe-gallery
  *
- * Requires sortablefile:
- * https://github.com/bummzack/sortablefile
+ * Requires silverstripe-carousel:
+ * https://github.com/ntd/silverstripe-carousel
  */
-
-Image::add_extension('GalleryImage');
