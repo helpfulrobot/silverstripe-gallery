@@ -1,67 +1,32 @@
 <?php
 
-class GalleryImage extends DataExtension {
-
-    private static $belongs_many_many = array(
-        'Gallery' => 'GalleryPage',
-    );
-}
-
-class GalleryPage extends Page {
+class GalleryPage extends CarouselPage {
 
     private static $icon = 'gallery/img/gallery.png';
     private static $db = array(
-        'Captions'    => 'Boolean default(true)',
-        'SlideHeight' => 'Int default(400)',
-        'StripHeight' => 'Int default(64)',
-    );
-    private static $many_many = array(
-        'Images' => 'Image'
-    );
-    private static $many_many_extraFields = array(
-        'Images' => array(
-            'SortOrder' => 'Int'
-        )
+        'ThumbnailWidth'  => 'Int default(64)',
+        'ThumbnailHeight' => 'Int default(64)',
     );
     private static $defaults = array(
-        'SlideHeight' => 400,
-        'StripHeight' => 64,
-        'Captions' => true
+        // Override the carousel default height to provide
+        // a height value more suitable to galleries
+        'Height'          => 400,
+        'ThumbnailWidth'  => 64,
+        'ThumbnailHeight' => 64,
     );
-
-    public function getCMSFields() {
-        $fields = parent::getCMSFields();
-
-        $field = new SortableUploadField('Images', _t('GalleryPage.UPLOAD'));
-        $fields->findOrMakeTab('Root.Gallery')
-            ->setTitle(_t('GalleryPage.SINGULARNAME'))
-            ->push($field);
-
-        return $fields;
-    }
 
     public function getSettingsFields() {
         $fields = parent::getSettingsFields();
 
-        $fields->addFieldToTab('Root.Settings',
-            FieldGroup::create(
-                TextField::create('SlideHeight', _t('GalleryPage.db_SlideHeight')),
-                TextField::create('StripHeight', _t('GalleryPage.db_StripHeight')),
-                CheckboxField::create('Captions', _t('GalleryPage.db_Captions'))
-            )->setTitle(_t('GalleryPage.SINGULARNAME'))
-        );
+        // Promove the CarouselPage settings to GalleryPage
+        $field = $fields->fieldByName('Root.Settings.Carousel');
+        $field->setTitle(_t('GalleryPage.SINGULARNAME'));
+        $field->push(TextField::create('ThumbnailWidth',  _t('GalleryPage.db_ThumbnailWidth')));
+        $field->push(TextField::create('ThumbnailHeight',  _t('GalleryPage.db_ThumbnailHeight')));
 
         return $fields;
     }
-
-    public function getCMSValidator() {
-        return new RequiredFields(array('SlideHeight', 'StripHeight'));
-    }
 }
 
-class GalleryPage_Controller extends Page_Controller {
-
-    public function SortedImages() {
-        return $this->Images()->Sort('SortOrder');
-    }
+class GalleryPage_Controller extends CarouselPage_Controller {
 }

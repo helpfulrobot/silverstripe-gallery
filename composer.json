@@ -19,7 +19,7 @@
     },
     "require": {
         "silverstripe/framework": ">=3.0",
-        "bummzack/sortablefile": "*"
+        "entidi/silverstripe-carousel": "A new page type that implements a carousel"
     },
     "extra": {
         "installer-name": "gallery"
