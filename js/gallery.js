@@ -21,7 +21,8 @@ $(document).ready(function () {
 			if (transition) return;
 			$.colorbox({
 			    href: extra.frame.full,
-			    title: extra.frame.caption
+			    title: extra.frame.caption,
+			    photo: true
 			});
 		    });
 	    });
