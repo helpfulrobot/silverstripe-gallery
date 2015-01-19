@@ -2,7 +2,7 @@
 
 class GalleryPage extends CarouselPage {
 
-    private static $icon = 'gallery/img/gallery.png';
+    private static $icon = 'gallery/img/image.png';
     private static $db = array(
         'ThumbnailWidth'  => 'Int default(64)',
         'ThumbnailHeight' => 'Int default(64)',
