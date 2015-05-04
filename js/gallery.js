@@ -1,6 +1,3 @@
-// Avoid data tracking, enabled by default in Fotorama
-blockFotoramaData = true;
-
 $(document).ready(function () {
     var click = true;
 
