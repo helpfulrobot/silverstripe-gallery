@@ -6,10 +6,7 @@ manage a photo gallery.
 
 You can do bulk uploads and reorder the images by dragging and dropping
 their thumbnails in a dedicated tab (_Gallery_) inside the CMS. The same
-image can be shared among multiple galleries. This module adds also some
-field to the _Settings_ tab. This will allow to customize some aspect of
-the gallery on a per page basis, e.g. the height of the thumbnail strip,
-the height of the image slide and a flag to show or hide the captions.
+image can be shared among multiple galleries.
 
 Usage
 -----
@@ -37,6 +34,33 @@ Alternatively, the `GalleryPage.ss` layout template is provided. It
 renders a full (standard) page, though it works out of the box only with
 [silverstrap](http://dev.entidi.com/p/silverstrap/) because it relies on
 some convention adopted by that theme.
+
+Configuration
+-------------
+
+This module adds some field to the _Settings_ tab. This will allow to
+customize some aspect of the gallery at run time on a per page basis,
+e.g. the height of the thumbnail strip, the height of the image slide
+and a flag to show or hide the captions.
+
+The fallback values can be customized too by leveraging the SilverStripe
+[configuration API](http://docs.silverstripe.org/en/developer_guides/configuration/).
+Just create your own YAML file in `mysite/_config`, e.g.:
+
+    ---
+    Name: DefaultSettings
+    After:
+      - 'gallery/*'
+    ---
+    GalleryPage:
+      defaults:
+        Captions: false
+        Height: 480
+        ThumbnailWidth: 0
+        ThumbnailHeight: 80
+
+The above settings will be applied to _every_ instance of the
+`GalleryPage` class.
 
 Author
 ------
