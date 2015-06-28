@@ -1,6 +1,6 @@
 {
     "name": "entidi/silverstripe-gallery",
-    "description": "A Silverstripe image gallery with sortable images",
+    "description": "A new page type that embeds a responsive and touch-enabled image gallery with strip thumbnail navigator and zoomable slides",
     "type": "silverstripe-module",
     "homepage": "http://silverstripe.entidi.com/",
     "keywords": ["silverstripe", "gallery"],
