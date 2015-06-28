@@ -18,8 +18,8 @@
         "source": "http://dev.entidi.com/p/silverstripe-gallery/source/tree/master/"
     },
     "require": {
-        "silverstripe/framework": ">=3.0",
-        "entidi/silverstripe-carousel": ">=2.0.0"
+        "silverstripe/framework": "~3.1",
+        "entidi/silverstripe-carousel": "~2.0"
     },
     "extra": {
         "installer-name": "gallery",
