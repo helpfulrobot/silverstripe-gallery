@@ -29,6 +29,15 @@ class GalleryPage extends CarouselPage {
 
         return $fields;
     }
+
+    public function getCMSValidator() {
+        return new RequiredFields(
+            'Width',
+            'Height',
+            'ThumbnailWidth',
+            'ThumbnailHeight'
+        );
+    }
 }
 
 class GalleryPage_Controller extends CarouselPage_Controller {
