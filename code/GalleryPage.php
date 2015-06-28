@@ -3,17 +3,12 @@
 class GalleryPage extends CarouselPage {
 
     private static $icon = 'gallery/img/image.png';
+
     private static $db = array(
-        'ThumbnailWidth'  => 'Int default(64)',
-        'ThumbnailHeight' => 'Int default(64)',
+        'ThumbnailWidth'  => 'Int',
+        'ThumbnailHeight' => 'Int',
     );
-    private static $defaults = array(
-        // Override the carousel default height to provide
-        // a height value more suitable to galleries
-        'Height'          => 400,
-        'ThumbnailWidth'  => 64,
-        'ThumbnailHeight' => 64,
-    );
+
 
     public function getSettingsFields() {
         $fields = parent::getSettingsFields();
