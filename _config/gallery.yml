@@ -5,7 +5,7 @@ After:
 ---
 GalleryPage:
     defaults:
-        Width:
+        Width: 0
         Height: 400
         ThumbnailWidth: 64
         ThumbnailHeight: 64
