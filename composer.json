@@ -3,7 +3,7 @@
     "description": "A new page type that embeds a responsive and touch-enabled image gallery with strip thumbnail navigator and zoomable slides",
     "type": "silverstripe-module",
     "homepage": "http://silverstripe.entidi.com/",
-    "keywords": ["silverstripe", "gallery"],
+    "keywords": ["silverstripe", "gallery", "fotorama", "bootstrap", "colorbox", "silverstrap"],
     "license": "BSD-3-Clause",
     "authors": [
         {
