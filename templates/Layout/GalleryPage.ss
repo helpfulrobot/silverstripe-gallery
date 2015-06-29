@@ -31,6 +31,8 @@
 				\$.colorbox({
 					href: extra.frame.full,
 					title: extra.frame.caption,
+					maxWidth: '98%',
+					maxHeight: '98%',
 					photo: true
 				});
 			});
