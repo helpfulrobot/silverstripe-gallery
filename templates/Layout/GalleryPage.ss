@@ -6,12 +6,12 @@
 	$Form
 </div>
 
-<%-- Include Fotorama 4 and Colorbox 1:
-     once my PR are included (if they are) we can use jsdelivr for everything --%>
-<% require CSS("//cdnjs.cloudflare.com/ajax/libs/fotorama/4.6.4/fotorama.min.css") %>
+<%-- Include Fotorama 4 and Colorbox 1
+     Once my PR is included (if it will be) we can use jsdelivr for everything:
+     https://github.com/jsdelivr/jsdelivr/pull/5523 --%>
+<% require CSS("//cdn.jsdelivr.net/jquery.fotorama/4/fotorama.min.css") %>
 <% require CSS("//cdnjs.cloudflare.com/ajax/libs/jquery.colorbox/1.4.33/example5/colorbox.min.css") %>
-<script type="text/javascript" src="//cdn.jsdelivr.net/g/jquery@1,colorbox@1"></script>
-<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/fotorama/4.6.4/fotorama.min.js"></script>
+<script type="text/javascript" src="//cdn.jsdelivr.net/g/jquery@1,jquery.fotorama@4,colorbox@1"></script>
 
 <%-- Enable the gallery --%>
 <script type="text/javascript">
