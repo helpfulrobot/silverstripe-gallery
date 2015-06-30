@@ -1,0 +1,11 @@
+---
+Name: gallery
+After:
+    - 'carousel/*'
+---
+GalleryPage:
+    defaults:
+        Width: 0
+        Height: 400
+        ThumbnailWidth: 64
+        ThumbnailHeight: 64

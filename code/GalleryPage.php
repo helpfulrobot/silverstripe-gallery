@@ -3,28 +3,40 @@
 class GalleryPage extends CarouselPage {
 
     private static $icon = 'gallery/img/image.png';
+
     private static $db = array(
-        'ThumbnailWidth'  => 'Int default(64)',
-        'ThumbnailHeight' => 'Int default(64)',
+        'ThumbnailWidth'  => 'Int',
+        'ThumbnailHeight' => 'Int',
     );
-    private static $defaults = array(
-        // Override the carousel default height to provide
-        // a height value more suitable to galleries
-        'Height'          => 400,
-        'ThumbnailWidth'  => 64,
-        'ThumbnailHeight' => 64,
-    );
+
 
     public function getSettingsFields() {
         $fields = parent::getSettingsFields();
 
         // Promove the CarouselPage settings to GalleryPage
-        $field = $fields->fieldByName('Root.Settings.Carousel');
-        $field->setTitle(_t('GalleryPage.SINGULARNAME'));
-        $field->push(TextField::create('ThumbnailWidth',  _t('GalleryPage.db_ThumbnailWidth')));
-        $field->push(TextField::create('ThumbnailHeight',  _t('GalleryPage.db_ThumbnailHeight')));
+        $group = $fields->fieldByName('Root.Settings.Carousel');
+        $group->setTitle(_t('GalleryPage.SINGULARNAME'));
+
+        // Integrate carousel settings with gallery settings
+        $subgroup = new FieldGroup();
+        $group->push($subgroup);
+
+        $field = new NumericField('ThumbnailWidth',  _t('GalleryPage.db_ThumbnailWidth'));
+        $subgroup->push($field);
+
+        $field = new NumericField('ThumbnailHeight',  _t('GalleryPage.db_ThumbnailHeight'));
+        $subgroup->push($field);
 
         return $fields;
+    }
+
+    public function getCMSValidator() {
+        return new RequiredFields(
+            'Width',
+            'Height',
+            'ThumbnailWidth',
+            'ThumbnailHeight'
+        );
     }
 }
 
